@@ -27,12 +27,17 @@ res[,1]<-as.numeric(as.character(res[,1])) #now the first column is Global Activ
 #Change locale to English
 Sys.setlocale("LC_TIME", "English")
 
+par(bg=NA) #Allows transparent background
+
+#Save plot to plot2.png
+png("plot2.png", width = 480, height = 480, bg = "transparent")
+
+
 #Make the plot
 with(res, plot(DateTime, Global_active_power, 
                type = "l",
                xlab="", 
                ylab="Global Active Power (kilowatts)"))
 
-#Save plot to plot2.png
-dev.copy(png, file = "plot2.png") 
+
 dev.off()

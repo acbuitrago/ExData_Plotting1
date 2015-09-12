@@ -29,6 +29,12 @@ res[,7]<-as.numeric(as.character(res[,7])) #now the 7 column is Submetering_3
 #Change locale to English
 Sys.setlocale("LC_TIME", "English")
 
+par(bg=NA) #Allows transparent background
+
+#Save plot to plot3.png
+png("plot3.png", width = 480, height = 480, bg = "transparent")
+
+
 #Plot DateTime vs Sub-metering 1 as lines
 with(res, plot(DateTime, Sub_metering_1, 
                type = "l", xlab="", ylab="Energy sub metering"))
@@ -42,6 +48,5 @@ legend("topright",
        col = c("black","blue", "red"), #Colors of the legends
        legend = c("Sub_metering_1", "Sub_metering_2","Sub_metering_3")) #Text in legend
 
-#Save plot to plot3.png
-dev.copy(png, file = "plot3.png") 
+
 dev.off()

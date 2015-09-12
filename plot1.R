@@ -13,6 +13,11 @@ res<-res[res$Date>=t1 & res$Date<=t2,]
 
 #Transform the third column into numeric
 res[,3]<-as.numeric(as.character(res[,3]))
+par(bg=NA) #Allows transparent background
+
+#Save histogram to plot1.png
+png("plot1.png", width = 480, height = 480, bg = "transparent")
+
 
 #Make histogram
 hist(res$Global_active_power, 
@@ -20,6 +25,5 @@ hist(res$Global_active_power,
      xlab = "Global Active Power (kilowattts)", 
      col="red")
 
-#Save histogram to plot1.png
-dev.copy(png, file = "plot1.png")
+
 dev.off()

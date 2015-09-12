@@ -32,8 +32,14 @@ res[,7]<-as.numeric(as.character(res[,7])) #now the 7 column is Submetering_3
 #Change locale to English
 Sys.setlocale("LC_TIME", "English")
 
+#Save plot to plot4.png
+png("plot4.png", width = 480, height = 480, bg = "transparent")
+
 #Setup the number of plots per row
 par(mfrow=c(2,2))
+par(bg=NA) #Allows transparent background
+
+
 
 #Make first plot
 with(res, plot(DateTime, Global_active_power, 
@@ -66,6 +72,5 @@ with(res, plot(DateTime, Global_reactive_power,
                type = "l", 
                xlab="datetime"))
 
-#Save plot to plot4.png
-dev.copy(png, file = "plot4.png") 
+
 dev.off()
